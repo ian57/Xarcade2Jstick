@@ -84,6 +84,7 @@ int findXarcadeDevice(void) {
             || (strcmp(name, "Xgaming  X-Arcade") == 0)
             || (strcmp(name, "XGaming X-Arcade 2") == 0)
 		    || (strcmp(name, "Ultimarc") == 0)
+			|| (strcmp(name, "Ultimarc I-PAC 2") == 0)
 		    || (strcmp(name, "XGaming USBAdapter") == 0)) {
 			printf("Found %s (%s)\n", filename, name);
 			break;
