@@ -201,9 +201,11 @@ int main(int argc, char* argv[]) {
 					outputKeyPress(1,BTN_Y, isPressed);
 					break;
 				case KEY_LEFTBRACE:
+				case KEY_I:
 					outputKeyPress(1,BTN_Z, isPressed);
 					break;
 				case KEY_RIGHTBRACE:
+				case KEY_K:
 					outputKeyPress(1,BTN_TL, isPressed);
 					break;
 				case KEY_6:
