@@ -80,6 +80,7 @@ int findXarcadeDevice(void) {
 		}
 
 		ioctl(fevdev, EVIOCGNAME(sizeof(name)), name);
+		printf("Device name (%s)\n", name);
 		if ((strcmp(name, "XGaming X-Arcade") == 0)
             || (strcmp(name, "Xgaming  X-Arcade") == 0)
             || (strcmp(name, "XGaming X-Arcade 2") == 0)
