@@ -63,9 +63,11 @@ int main(int argc, char* argv[]) {
 	int rd, ctr, combo = 0;
 	char keyStates[256];
 
+	char* evdev = NULL;
+
 	int detach = 0;
 	int opt;
-	while ((opt = getopt(argc, argv, "+ds")) != -1) {
+	while ((opt = getopt(argc, argv, "dse:")) != -1) {
 		switch (opt) {
 			case 'd':
 				detach = 1;
@@ -73,8 +75,11 @@ int main(int argc, char* argv[]) {
 			case 's':
 				use_syslog = 1;
 				break;
+			case 'e':
+				evdev = optarg;
+		        break;
 			default:
-				fprintf(stderr, "Usage: %s [-d] [-s]\n", argv[0]);
+				fprintf(stderr, "Usage: %s [-d] [-s] [-e eventPath]\n", argv[0]);
 				exit(EXIT_FAILURE);
 				break;
 		}
@@ -84,8 +89,8 @@ int main(int argc, char* argv[]) {
 
 	printf("[Xarcade2Joystick] Getting exclusive access: ");
 	int retry_time=3;
-	while ( input_xarcade_open(&xarcdev, INPUT_XARC_TYPE_TANKSTICK) != 0) {
-		if (errno == 0) {
+	while ( input_xarcade_open(&xarcdev, INPUT_XARC_TYPE_TANKSTICK, evdev) != 0) {
+			if (errno == 0) {
 			printf("Not found.\n");
 			SYSLOG(LOG_ERR, "Xarcade not found, exiting.");
 		} else {
